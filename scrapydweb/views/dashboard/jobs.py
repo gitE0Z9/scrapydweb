@@ -179,7 +179,7 @@ class JobsView(BaseView):
         else:
             self.Job = create_jobs_table(re.sub(STRICT_NAME_PATTERN, '_', self.SCRAPYD_SERVER))
             # sqlite3.OperationalError: table "127_0_0_1_6800" already exists
-            db.create_all(bind='jobs')
+            db.create_all(bind_key='jobs')
             self.metadata[self.node] = self.Job
             jobs_table_map[self.node] = self.Job
             self.logger.debug("Created table: %s", self.Job.__tablename__)
