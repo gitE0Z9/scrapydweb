@@ -111,7 +111,7 @@ def check_app_config(config):
         if node not in jobs_table_map:
             jobs_table_map[node] = create_jobs_table(re.sub(STRICT_NAME_PATTERN, '_', scrapyd_server))
     with db.app.app_context():
-        db.create_all(bind_key='jobs')
+        db.create_all(bind='jobs')
     logger.debug("Created %s tables for JobsView", len(jobs_table_map))
 
     check_assert('LOCAL_SCRAPYD_LOGS_DIR', '', str)
